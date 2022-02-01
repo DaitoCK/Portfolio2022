@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="FR-fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Favicons -->
+    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <title>{% block title %}Portfolio de Romaric Rapiné{% endblock %}</title>
+    {% block stylesheets %}
+        <!-- Bootstrap CSS File -->
+        <link href="{{ asset('assets/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="{{ asset('assets/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/lib/animate/animate.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+        <!-- Main Stylesheet File -->
+        {% if app.request.attributes.get('_route') == 'app_view_project_user' %}
+        <link href="{{ asset('assets/css/style-details.css') }}" rel="stylesheet">
+            <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+        {% else %}
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+        {% endif %}
+
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+
+</head>
+<body id="page-top">
+{% block body %}
+{% endblock %}
+</body>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <!-- JavaScript Libraries -->
+    <script src="{{ asset('assets/lib/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/jquery/jquery-migrate.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/counterup/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/counterup/jquery.counterup.js') }}"></script>
+    <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/typed/typed.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/purecounter/purecounter.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/typed.js/typed.min.js') }}"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="{{ asset('assets/contactform/contactform.js') }}"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+{% endblock %}
+</html>

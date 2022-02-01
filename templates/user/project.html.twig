@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <!--/ Nav Star /-->
+            <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
+                <div class="container">
+                    <a class="navbar-brand js-scroll" href="{{ path('app_home_user') }}">Rapiné Romaric</a>
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+                            aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll active" href="{{ path('app_home_user') }}">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll" href="{{ path('app_home_user') }}#about">A propos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll" href="{{ path('app_home_user') }}#service">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll" href="{{ path('app_home_user') }}#work">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll" href="{{ path('app_home_user') }}#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--/ Nav End /-->
+
+        </div>
+    </header><!-- End Header -->
+
+    <div class="hero hero-single route bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+        <div class="overlay-mf"></div>
+        <div class="hero-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <h2 class="hero-title mb-4">{{ projects.name }}</h2>
+                    <ol class="breadcrumb d-flex justify-content-center">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('app_home_user') }}">Accueil</a>
+                        </li>
+                        <li class="breadcrumb-item active">{{ projects.name }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="main">
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-8">
+                        <div class="portfolio-details-slider swiper">
+                            <div class="swiper-wrapper align-items-center">
+
+                                <div class="swiper-slide">
+                                    <img src="{{ vich_uploader_asset(projects, 'imageFile') }}" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="portfolio-info">
+                            <h3>Informations sur le Projet</h3>
+                            <ul>
+
+                                <li>
+                                    <strong>Catégories :</strong>
+                                    {% for tags in projects.tags %}
+                                        <span style="text-transform: capitalize;">{{ tags.name }}<br></span>
+                                    {% endfor %}
+                                </li>
+
+                                <li>
+                                    <strong>URL du Projet :</strong>
+                                    <a href="{{ projects.urlWeb }}">{{ projects.urlWeb }}</a>
+                                </li>
+
+                                <li>
+                                    <strong>Git du Projet :</strong>
+                                    <a href="{{ projects.urlGit }}">{{ projects.urlGit }}</a>
+                                </li>
+
+                                <li>
+                                    <strong>Date de Création :</strong>
+                                    <span style="text-transform: capitalize">{{ projects.createdAt|format_datetime('long', 'none') }}</span>
+                                </li>
+
+                                <li>
+                                    <strong>Date de Modification :</strong>
+                                    <span style="text-transform: capitalize">{{ projects.updatedAt|format_datetime('long', 'none') }}</span>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="portfolio-description">
+                        <h2>Description du Projet</h2>
+                        <p>
+                            {{ projects.description|raw }}
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="copyright-box">
+                        <p class="copyright">&copy; Copyright
+                            {% for counter in counters %}
+                                <span>{{ counter.counterOfYears }}</span>
+                            {% endfor %}
+                            <strong>Rapiné Romaric</strong>.</p>
+                        <div class="credits">
+                            Tous droits réservés
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End  Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i></a>
+
+{% endblock %}
+
