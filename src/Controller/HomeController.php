@@ -8,6 +8,7 @@ use App\Form\ContactType;
 use App\Repository\CategorieRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\UserRepository;
+use App\Service\ContactService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,7 +35,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ProjetRepository $projetRepository, Request $request): Response
+    public function index(ProjetRepository $projetRepository, Request $request, ContactService $contactService): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -43,6 +44,9 @@ class HomeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
 
+            $contactService->persistContact($contact);
+
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('home/index.html.twig', [

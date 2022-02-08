@@ -412,6 +412,11 @@
                                     </div>
                                     <div>
                                         {{ form_start(form, {'attr': {'class': 'php-email-form'}}) }}
+                                            {% for message in app.flashes('success') %}
+                                                <div class="alert alert-success">
+                                                    {{ message }}
+                                                </div>
+                                            {% endfor %}
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="form-group">
