@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Counter;
 use App\Entity\Projet;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -29,5 +30,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fas fa-home');
         yield MenuItem::linkToCrud('Projet', 'fas fa-laptop', Projet::class);
+        yield MenuItem::linkToCrud('Compteur', 'fas fa-users', Counter::class);
+
     }
 }

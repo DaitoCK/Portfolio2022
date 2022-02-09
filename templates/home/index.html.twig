@@ -220,14 +220,16 @@
                 <div class="col-md-4">
                     <div class="service-box">
                         <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-android-phone-portrait"></i></span>
+                            <span class="ico-circle"><i class="ion-android-globe"></i></span>
                         </div>
                         <div class="service-content">
-                            <h2 class="s-title">Intégrations Web</h2>
+                            <h2 class="s-title">Réseaux</h2>
                             <p class="s-ription text-center">
-                                Des intégrations HTML / CSS
-                                respectueuses des standards du Web.
-                                De templates ou de design fait sur-mesure.
+                                Réseaux et Protocoles
+                                (TCP/IP,HTTP,FTP..)
+                                Ethernet Communication (Cisco,
+                                VLANs, Routage IP)Outils d'analyse réseau (Wireshark,
+                                nmap, Packet tracer..)
                             </p>
                         </div>
                     </div>
@@ -235,13 +237,13 @@
                 <div class="col-md-4">
                     <div class="service-box">
                         <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-android-phone-portrait"></i></span>
+                            <span class="ico-circle"><i class="ion-code-working"></i></span>
                         </div>
                         <div class="service-content">
-                            <h2 class="s-title">Interface d'administration</h2>
+                            <h2 class="s-title">Intégrations Web</h2>
                             <p class="s-ription text-center">
-                                Outils spécifiques au bon fonctionnement
-                                de votre entreprise.
+                                Des intégrations HTML / CSS
+                                respectueuses des standards du Web.
                             </p>
                         </div>
                     </div>
@@ -263,7 +265,7 @@
                 <div class="col-md-4">
                     <div class="service-box">
                         <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-stats-bars"></i></span>
+                            <span class="ico-circle"><i class="ion-android-laptop"></i></span>
                         </div>
                         <div class="service-content">
                             <h2 class="s-title">Maintenance informatique</h2>
@@ -290,9 +292,9 @@
                             <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
                         </div>
                         <div class="counter-num">
-{#                            {% for counter in counters %}#}
-{#                                <p class="counter">{{ counter.counterOfSites }}</p>#}
-{#                            {% endfor %}#}
+                            {% for counter in counters %}
+                                <p class="counter">{{ counter.counterOfSites }}</p>
+                            {% endfor %}
                             <span class="counter-text">Sites Créer</span>
                         </div>
                     </div>
@@ -303,9 +305,9 @@
                             <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
                         </div>
                         <div class="counter-num">
-{#                            {% for counter in counters %}#}
-{#                                <p class="counter">{{ counter.counterOfYearsWork }}</p>#}
-{#                            {% endfor %}#}
+                            {% for counter in counters %}
+                                <p class="counter">{{ counter.counterOfYearsWork }}</p>
+                            {% endfor %}
                             <span class="counter-text">Années d'expériences</span>
                         </div>
                     </div>
@@ -316,9 +318,9 @@
                             <span class="ico-circle"><i class="ion-ios-people"></i></span>
                         </div>
                         <div class="counter-num">
-{#                            {% for counter in counters %}#}
-{#                                <p class="counter">{{ counter.counterOfClients }}</p>#}
-{#                            {% endfor %}#}
+                            {% for counter in counters %}
+                                <p class="counter">{{ counter.counterOfClients }}</p>
+                            {% endfor %}
                             <span class="counter-text">Clients</span>
                         </div>
                     </div>
@@ -329,10 +331,10 @@
                             <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
                         </div>
                         <div class="counter-num">
-{#                            {% for counter in counters %}#}
-{#                                <p class="counter">{{ counter.counterOfWin }}</p>#}
-{#                            {% endfor %}#}
-                            <span class="counter-text">Idée a voir</span>
+                            {% for counter in counters %}
+                                <p class="counter">{{ counter.counterOfWin }}</p>
+                            {% endfor %}
+                            <span class="counter-text">Projet en cours</span>
                         </div>
                     </div>
                 </div>
@@ -464,7 +466,7 @@
                                     <div class="socials">
                                         <ul>
                                             <li>
-                                                <a href="">
+                                                <a href="https://linkedin.com/in/kendhal-cayrel-446b7512a" target="_blank">
                                                     <span class="ico-circle">
                                                         <i class="ion-social-linkedin"></i>
                                                     </span>
@@ -492,9 +494,9 @@
                     <div class="col-sm-12">
                         <div class="copyright-box">
                             <p class="copyright">&copy; Copyright
-{#                                {% for counter in counters %}#}
-{#                                    <span>{{ counter.counterOfYears }}</span>#}
-{#                                {% endfor %}#}
+                                {% for counter in counters %}
+                                    <span>{{ counter.counterOfYears }}</span>
+                                {% endfor %}
                                 <strong>B&WI</strong>.</p>
                             <div class="credits">
                                 Tous droits réservés

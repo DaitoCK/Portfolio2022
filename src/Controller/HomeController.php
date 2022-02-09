@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use App\Entity\Projet;
 use App\Form\ContactType;
 use App\Repository\CategorieRepository;
+use App\Repository\CounterRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\UserRepository;
 use App\Service\ContactService;
@@ -19,17 +20,20 @@ class HomeController extends AbstractController
     private ProjetRepository $projetRepository;
     private UserRepository $userRepository;
     private CategorieRepository $categorieRepository;
+    private CounterRepository $counterRepository;
 
 
     public function __construct(
         UserRepository $userRepository,
         CategorieRepository $categorieRepository,
-        ProjetRepository $projetRepository
+        ProjetRepository $projetRepository,
+        CounterRepository $counterRepository
     )
     {
         $this->userRepository = $userRepository;
         $this->categorieRepository = $categorieRepository;
         $this->projetRepository = $projetRepository;
+        $this->counterRepository = $counterRepository;
     }
 
     /**
@@ -51,7 +55,8 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'projets' => $this->projetRepository->findAll(),
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'counters' => $this->counterRepository->findAll(),
         ]);
 
     }
@@ -62,7 +67,8 @@ class HomeController extends AbstractController
     public function viewProjet(Projet $projet): Response
     {
         return $this->render('home/project.html.twig', [
-            'projet' => $projet
+            'projet' => $projet,
+            'counters' => $this->counterRepository->findAll(),
         ]);
     }
 
