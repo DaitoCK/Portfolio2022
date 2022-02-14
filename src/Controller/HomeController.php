@@ -2,14 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Contact;
 use App\Entity\Projet;
 use App\Form\ContactType;
-use App\Repository\CategorieRepository;
 use App\Repository\CounterRepository;
 use App\Repository\ProjetRepository;
-use App\Repository\UserRepository;
-use App\Service\ContactService;
+use App\Service\Mailer\MailerServiceInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,20 +16,14 @@ use Symfony\Component\HttpFoundation\Request;
 class HomeController extends AbstractController
 {
     private ProjetRepository $projetRepository;
-    private UserRepository $userRepository;
-    private CategorieRepository $categorieRepository;
     private CounterRepository $counterRepository;
 
 
     public function __construct(
-        UserRepository $userRepository,
-        CategorieRepository $categorieRepository,
         ProjetRepository $projetRepository,
         CounterRepository $counterRepository
     )
     {
-        $this->userRepository = $userRepository;
-        $this->categorieRepository = $categorieRepository;
         $this->projetRepository = $projetRepository;
         $this->counterRepository = $counterRepository;
     }
@@ -39,17 +31,29 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ProjetRepository $projetRepository, Request $request, ContactService $contactService): Response
+    public function index(Request $request, MailerServiceInterface $mailer): Response
     {
-        $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
+
+        $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $contact = $form->getData();
+            $data = $form->getData();
 
-            $contactService->persistContact($contact);
-
+            $toAdress = [new Address('contact@kendhal-cayrel.fr')];
+            $mailer->send(
+                $data['mail'],
+                $toAdress,
+                $data['subject'],
+                'emails/contact.mjml.twig',
+                'email/contact.txt.twig',
+                [
+                    'name' => $data['name'],
+                    'mail' => $data['mail'],
+                    'subject' => $data['subject'],
+                    'message' => $data['message']
+                ]
+            );
             return $this->redirectToRoute('home');
         }
 
