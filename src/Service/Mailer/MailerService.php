@@ -57,7 +57,7 @@ class MailerService implements MailerServiceInterface
 
     public function send(string $from, array $toAddresses, string $subject, string $mjmlTemplate, string $txt, array $params)
     {
-        $toAddresses = ['contact@romaric-rapine.fr'];
+        $toAddresses = ['contact@kendhal-cayrel.fr'];
         $email = (new TemplatedEmail())
             ->from($from)
             ->to(...$toAddresses)

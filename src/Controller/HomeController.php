@@ -46,7 +46,7 @@ class HomeController extends AbstractController
                 $toAdress,
                 $data['subject'],
                 'emails/contact.mjml.twig',
-                'email/contact.txt.twig',
+                'emails/contact.txt.twig',
                 [
                     'name' => $data['name'],
                     'mail' => $data['mail'],
